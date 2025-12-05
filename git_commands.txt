@@ -1,0 +1,85 @@
+# 🔥 Git Cheat Sheet — Most Used Git Commands
+
+This document contains the most important and frequently used Git commands for daily development.
+
+---
+
+## 🧱 1️⃣ Git Configuration
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --list
+```
+## 📂 2️⃣ Start a Repository
+```bash
+git init
+git clone <repo_url>
+```
+## ➕ 3️⃣ Stage Files (Add to Index)
+```bash
+git add <file>
+git add .
+```
+## 📝 4️⃣ Commit Changes
+```bash
+git commit -m "message"
+git commit -am "message"   # add + commit for tracked files
+```
+## 🔍 5️⃣ Check Status & Logs
+```bash
+git status
+git log
+git log --oneline --graph --decorate --all
+```
+## 🌿 6️⃣ Branching
+```bash
+git branch
+git branch <branch-name>
+git switch <branch-name>
+git checkout <branch-name>         # old switching method
+git checkout -b <branch-name>      # create + switch
+```
+## 🔁 7️⃣ Merge & Rebase
+```bash
+git merge <branch-name>
+git rebase <branch-name>
+```
+## 🌐 8️⃣ Remote Repository
+```bash
+git remote -v
+git remote add origin <url>
+git remote remove origin
+```
+## 🚀 9️⃣ Push & Pull
+```bash
+git push -u origin main     # first push
+git push                    # regular push
+git pull                    # get & merge latest
+git fetch                   # get latest without merge
+```
+## ♻️ 🔟 Undo / Reset Commands
+```bash
+git restore <file>
+git restore --staged <file>
+git reset --soft HEAD~1     # undo commit but keep changes staged
+git reset --hard HEAD~1     # remove commit + remove changes ⚠️
+```
+## 1️⃣1️⃣ Remove Files
+```bash
+git rm <file>
+git clean -fd               # delete untracked files ⚠️
+```
+## 1️⃣2️⃣ Compare Changes
+```bash
+git diff                    # unstaged changes
+git diff --staged           # staged changes
+```
+## ⭐ Quick Summary
+```bash
+git init → start repo
+git add . → stage changes
+git commit -m "msg" → save changes
+git status → check current state
+git push / git pull → sync with remote
+git branch / checkout → work with branches
+```
