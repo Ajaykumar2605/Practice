@@ -8,3 +8,7 @@ hi
 python
 ending
 ```
+**bold letters**
+***bold italiy***
+*text italiy*
+**bold**
