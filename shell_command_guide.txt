@@ -1,0 +1,196 @@
+===============================
+ LINUX SHELL SCRIPTING GUIDE
+===============================
+
+--------------------------------------
+1. INTRODUCTION TO SHELL SCRIPTING
+--------------------------------------
+A shell script is a text file that contains a series of Linux commands
+which are executed automatically line by line.
+
+File extension:  .sh
+Default shell:   bash (/bin/bash)
+
+--------------------------------------
+2. HOW TO CREATE & RUN A SCRIPT
+--------------------------------------
+Step-1: Create a file
+    nano myscript.sh
+Step-2: Insert script content
+    #!/bin/bash
+    echo "Hello World"
+Step-3: Save and exit
+Step-4: Make it executable
+    chmod +x myscript.sh
+Step-5: Run
+    ./myscript.sh
+
+--------------------------------------
+3. VARIABLES
+--------------------------------------
+name="Ajay"
+age=25
+echo "My name is $name and age is $age"
+
+System variables (always uppercase)
+echo $USER
+echo $HOME
+echo $PWD
+
+--------------------------------------
+4. USER INPUT
+--------------------------------------
+read -p "Enter your name: " username
+echo "Welcome $username"
+
+--------------------------------------
+5. CONDITIONAL STATEMENTS (IF)
+--------------------------------------
+if [ condition ]; then
+    commands
+elif [ condition ]; then
+    commands
+else
+    commands
+fi
+
+Example:
+a=10
+if [ $a -gt 5 ]; then
+    echo "Greater"
+else
+    echo "Smaller"
+fi
+
+--------------------------------------
+6. LOOPS
+--------------------------------------
+FOR loop:
+for i in 1 2 3 4 5; do
+    echo $i
+done
+
+WHILE loop:
+count=1
+while [ $count -le 5 ]; do
+    echo $count
+    count=$((count + 1))
+done
+
+UNTIL loop:
+n=10
+until [ $n -eq 0 ]; do
+    echo $n
+    n=$((n - 1))
+done
+
+--------------------------------------
+7. FUNCTIONS
+--------------------------------------
+function greet() {
+    echo "Hello $1"
+}
+
+greet Ajay
+
+--------------------------------------
+8. COMMAND LINE ARGUMENTS
+--------------------------------------
+./script.sh arg1 arg2
+
+$1 = first argument
+$2 = second argument
+$# = argument count
+$@ = all arguments
+
+Example:
+echo "Script name: $0"
+echo "1st argument: $1"
+echo "Total: $#"
+
+--------------------------------------
+9. EXIT STATUS
+--------------------------------------
+Every command returns success (0) or failure (non-zero)
+echo $?  -> prints exit status of previous command
+
+--------------------------------------
+10. ARRAYS
+--------------------------------------
+fruits=("apple" "banana" "mango")
+echo ${fruits[0]}
+echo ${fruits[@]}
+
+--------------------------------------
+11. CASE STATEMENT
+--------------------------------------
+case $choice in
+1) echo "Start" ;;
+2) echo "Stop" ;;
+3) echo "Restart" ;;
+*) echo "Invalid choice" ;;
+esac
+
+--------------------------------------
+12. FILE & DIRECTORY CHECKS
+--------------------------------------
+if [ -f filename ]; then    # regular file
+if [ -d dirname ]; then     # directory
+if [ -r file ]; then        # readable
+if [ -w file ]; then        # write
+if [ -x file ]; then        # executable
+
+--------------------------------------
+13. LOOP THROUGH FILE
+--------------------------------------
+while read line; do
+    echo $line
+done < file.txt
+
+--------------------------------------
+14. CRON JOBS (AUTOMATION)
+--------------------------------------
+crontab -e
+Syntax:
+* * * * * command
+(min hour day month weekday)
+
+--------------------------------------
+15. DEBUGGING SCRIPTS
+--------------------------------------
+Run script with debugging:
+bash -x script.sh
+
+Add inside script:
+set -x   # enable debug
+set +x   # disable debug
+
+--------------------------------------
+16. BEST PRACTICES
+--------------------------------------
+- Always start with #!/bin/bash
+- Use meaningful variable names
+- Use comments
+- Always validate user input
+- Avoid using hardcoded paths
+- Use exit codes
+
+--------------------------------------
+17. SAMPLE SCRIPT – MENU DRIVEN PROGRAM
+--------------------------------------
+#!/bin/bash
+echo "1) Show date"
+echo "2) Show users"
+echo "3) Exit"
+read -p "Enter choice: " ch
+
+case $ch in
+1) date ;;
+2) who ;;
+3) exit ;;
+*) echo "Invalid" ;;
+esac
+
+--------------------------------------
+END OF GUIDE
+--------------------------------------
