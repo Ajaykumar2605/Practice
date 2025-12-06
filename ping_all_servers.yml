@@ -1,0 +1,12 @@
+---
+- name: Ping servers and display hostname
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Ping node
+      ping:
+
+    - name: Print server hostname
+      debug:
+        msg: "Connection successful from {{ inventory_hostname }} (Hostname: {{ ansible_hostname }})"
