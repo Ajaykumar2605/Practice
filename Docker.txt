@@ -1,0 +1,93 @@
+Docker – Most Common Commands
+🔹 Docker Service
+systemctl start docker
+systemctl stop docker
+systemctl restart docker
+systemctl status docker
+
+🔹 Containers
+
+List containers:
+
+docker ps
+docker ps -a
+
+
+Run container:
+
+docker run -d --name web nginx
+
+
+Stop / Start:
+
+docker stop web
+docker start web
+docker restart web
+
+
+Delete container:
+
+docker rm web
+docker rm -f web
+
+🔹 Images
+
+List images:
+
+docker images
+
+
+Pull image:
+
+docker pull nginx
+
+
+Remove image:
+
+docker rmi nginx
+
+🔹 Logs & Exec
+
+Logs:
+
+docker logs web
+docker logs -f web
+
+
+Enter container:
+
+docker exec -it web /bin/bash
+
+🔹 Volumes
+docker volume ls
+docker volume create data
+docker volume rm data
+docker volume prune
+
+
+Run with volume:
+
+docker run -d -v data:/app nginx
+
+🔹 Networks
+docker network ls
+docker network create mynet
+docker network inspect mynet
+docker network rm mynet
+
+🔹 Build & Push
+docker build -t myapp .
+docker tag myapp user/myapp
+docker push user/myapp
+
+🔹 Cleanup (Very Important)
+docker container prune
+docker image prune
+docker volume prune
+docker system prune
+docker system prune -a
+
+🔹 Inspect & Monitor
+docker inspect web
+docker stats
+docker port web
